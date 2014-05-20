@@ -168,7 +168,7 @@ public class PropsFile {
 			String key = e.getKey();
 			String val = e.getValue();
 
-			pw.println(key+"="+val);
+			pw.println(key+ '=' +val);
 		}
 
 		pw.close();

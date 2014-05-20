@@ -277,7 +277,7 @@ public abstract class Freemail implements ConfigClient {
 
 		@Override
 		public Thread newThread(Runnable runnable) {
-			String name = prefix + " " + threadCount.getAndIncrement();
+			String name = prefix + ' ' + threadCount.getAndIncrement();
 			Logger.debug(this, "Creating new thread: " + name);
 			return new Thread(runnable, name);
 		}

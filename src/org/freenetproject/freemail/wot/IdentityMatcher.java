@@ -100,19 +100,19 @@ public class IdentityMatcher {
 	}
 
 	private boolean matchBase64Address(String recipient, Identity identity) {
-		String identityAddress = identity.getNickname() + "@" + identity.getIdentityID() + ".freemail";
+		String identityAddress = identity.getNickname() + '@' + identity.getIdentityID() + ".freemail";
 		return identityAddress.startsWith(recipient);
 	}
 
 	private boolean matchBase32Address(String recipient, Identity identity) {
 		String base32Id = identity.getBase32IdentityID();
-		String identityAddress = identity.getNickname() + "@" + base32Id + ".freemail";
+		String identityAddress = identity.getNickname() + '@' + base32Id + ".freemail";
 
 		//Change the recipient address to lower case, but leave the nickname in the original case
 		if(recipient.contains("@")) {
-			String recipientNickname = recipient.substring(0, recipient.indexOf("@"));
-			String recipientDomain = recipient.substring(recipient.indexOf("@") + 1);
-			recipient = recipientNickname + "@" + recipientDomain.toLowerCase(Locale.ROOT);
+			String recipientNickname = recipient.substring(0, recipient.indexOf('@'));
+			String recipientDomain = recipient.substring(recipient.indexOf('@') + 1);
+			recipient = recipientNickname + '@' + recipientDomain.toLowerCase(Locale.ROOT);
 		}
 
 		return identityAddress.startsWith(recipient);
@@ -127,7 +127,7 @@ public class IdentityMatcher {
 	private boolean matchFullAddress(String recipient, String identityId) {
 		//Remove the optional local part
 		if(recipient.contains("@")) {
-			recipient = recipient.substring(recipient.indexOf("@") + 1);
+			recipient = recipient.substring(recipient.indexOf('@') + 1);
 		}
 
 		//Remove the optional ".freemail"

@@ -88,7 +88,7 @@ public class MockHighLevelFCPClient extends HighLevelFCPClient {
 				}
 			}
 
-			Logger.debug(this, "No match found, waiting (key=" + key + ")");
+			Logger.debug(this, "No match found, waiting (key=" + key + ')');
 			wait(TimeUnit.MILLISECONDS.convert(timeoutAt - System.nanoTime(), TimeUnit.NANOSECONDS));
 		}
 
@@ -97,7 +97,7 @@ public class MockHighLevelFCPClient extends HighLevelFCPClient {
 
 	@Override
 	public synchronized File fetch(String key) throws ConnectionTerminatedException, FCPFetchException, FCPException, InterruptedException {
-		Logger.debug(this, "fetch(key=" + key + ")");
+		Logger.debug(this, "fetch(key=" + key + ')');
 
 		if(fetchResults == null) {
 			Logger.debug(this, "fetch(): Throwing GetFailed (fetchResults is null)");
@@ -136,7 +136,7 @@ public class MockHighLevelFCPClient extends HighLevelFCPClient {
 	public synchronized FCPPutFailedException put(InputStream data, String key) throws FCPBadFileException,
 	                                                                      ConnectionTerminatedException,
 	                                                                      FCPException, InterruptedException {
-		Logger.debug(this, "put(key=" + key + ")");
+		Logger.debug(this, "put(key=" + key + ')');
 
 		inserts.add(new Insert(key, data));
 		notifyAll();
@@ -150,7 +150,7 @@ public class MockHighLevelFCPClient extends HighLevelFCPClient {
 		Logger.debug(this, "SlotInsert(data=" + data
 		                            + ", basekey=" + basekey
 		                            + ", minslot=" + minslot
-		                            + ", suffix=" + suffix + ")");
+		                            + ", suffix=" + suffix + ')');
 
 		throw new UnsupportedOperationException();
 	}
@@ -161,9 +161,9 @@ public class MockHighLevelFCPClient extends HighLevelFCPClient {
 		Logger.debug(this, "slotInsert(data.length=" + data.length
 		                            + ", basekey=" + basekey
 		                            + ", minslot=" + minslot
-		                            + ", suffix=" + suffix + ")");
+		                            + ", suffix=" + suffix + ')');
 		try {
-			put(new ByteArrayInputStream(data), basekey + "-" + minslot);
+			put(new ByteArrayInputStream(data), basekey + '-' + minslot);
 		} catch (FCPBadFileException e) {
 			throw new AssertionError();
 		} catch (FCPException e) {
@@ -174,13 +174,13 @@ public class MockHighLevelFCPClient extends HighLevelFCPClient {
 
 	@Override
 	public void requestStatus(FCPMessage msg) {
-		Logger.debug(this, "requestStatus(msg=" + msg + ")");
+		Logger.debug(this, "requestStatus(msg=" + msg + ')');
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public void requestFinished(FCPMessage msg) {
-		Logger.debug(this, "requestFinished(msg=" + msg + ")");
+		Logger.debug(this, "requestFinished(msg=" + msg + ')');
 		throw new UnsupportedOperationException();
 	}
 
@@ -206,7 +206,7 @@ public class MockHighLevelFCPClient extends HighLevelFCPClient {
 
 		@Override
 		public String toString() {
-			return "Fetch [key=" + key + "]";
+			return "Fetch [key=" + key + ']';
 		}
 	}
 
@@ -234,7 +234,7 @@ public class MockHighLevelFCPClient extends HighLevelFCPClient {
 
 		@Override
 		public String toString() {
-			return "Insert [key=" + key + "]";
+			return "Insert [key=" + key + ']';
 		}
 	}
 }

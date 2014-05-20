@@ -103,7 +103,7 @@ public class RTSFetcher implements SlotSaveCallback {
 					Logger.normal(this, "Maximum attempts at handling RTS reached - deleting RTS");
 					files[i].delete();
 				} else {
-					File newname = new File(this.contact_dir, parts[0] + "," + tries);
+					File newname = new File(this.contact_dir, parts[0] + ',' + tries);
 					files[i].renameTo(newname);
 				}
 			}
@@ -148,7 +148,7 @@ public class RTSFetcher implements SlotSaveCallback {
 		fcpcli = new HighLevelFCPClient();
 
 		String keybase;
-		keybase = this.rtskey + date + "-";
+		keybase = this.rtskey + date + '-';
 
 		MySlotSaveData cbdata = new MySlotSaveData();
 		cbdata.log = log;
@@ -168,7 +168,7 @@ public class RTSFetcher implements SlotSaveCallback {
 
 				Logger.normal(this, keybase+slot+": got RTS!");
 
-				File rts_dest = new File(this.contact_dir, RTS_UNPROC_PREFIX + "-" + log.getAndIncUnprocNextId()+",0");
+				File rts_dest = new File(this.contact_dir, RTS_UNPROC_PREFIX + '-' + log.getAndIncUnprocNextId()+",0");
 
 				// stick this message in the RTS 'inbox'
 				if(result.renameTo(rts_dest)) {

@@ -134,16 +134,16 @@ public class EmailAddress {
 	}
 
 	public String getMailpageKey() {
-		return "USK@"+new String (Base32.decode(this.getSubDomain()))+"/"+AccountManager.MAILSITE_SUFFIX+"/"+AccountManager.MAILSITE_VERSION+"/"+MailSite.MAILPAGE;
+		return "USK@"+new String (Base32.decode(this.getSubDomain()))+ '/' +AccountManager.MAILSITE_SUFFIX+ '/' +AccountManager.MAILSITE_VERSION+ '/' +MailSite.MAILPAGE;
 	}
 
 	@Override
 	public String toString() {
-		return this.user+"@"+this.domain;
+		return this.user+ '@' +this.domain;
 	}
 
 	public String toLongString() {
-		return this.realname + " <"+this.user+"@"+this.domain+">";
+		return this.realname + " <"+this.user+ '@' +this.domain+ '>';
 	}
 
 	/**

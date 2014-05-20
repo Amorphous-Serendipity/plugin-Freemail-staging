@@ -134,19 +134,19 @@ public class MessageToadlet extends WebPage {
 		HTMLNode fromPara = headerBox.addChild("p");
 		fromPara.addChild("strong", "From:");
 		try {
-			fromPara.addChild("#", " " + MailMessage.decodeHeader(message.getFirstHeader("from")));
+			fromPara.addChild("#", ' ' + MailMessage.decodeHeader(message.getFirstHeader("from")));
 		} catch (UnsupportedEncodingException e1) {
-			fromPara.addChild("#", " " + message.getFirstHeader("from"));
+			fromPara.addChild("#", ' ' + message.getFirstHeader("from"));
 		}
 
 		for(String header : new String[] {"To", "CC", "BCC"}) {
 			for(String recipient : message.getHeadersByName(header)) {
 				HTMLNode toPara = headerBox.addChild("p");
-				toPara.addChild("strong", header + ":");
+				toPara.addChild("strong", header + ':');
 				try {
-					toPara.addChild("#", " " + MailMessage.decodeHeader(recipient));
+					toPara.addChild("#", ' ' + MailMessage.decodeHeader(recipient));
 				} catch (UnsupportedEncodingException e) {
-					toPara.addChild("#", " " + recipient);
+					toPara.addChild("#", ' ' + recipient);
 				}
 			}
 		}
@@ -163,7 +163,7 @@ public class MessageToadlet extends WebPage {
 		if((subject == null) || (subject.equals(""))) {
 			subject = FreemailL10n.getString("Freemail.Web.Common.defaultSubject");
 		}
-		subjectPara.addChild("#", " " + subject);
+		subjectPara.addChild("#", ' ' + subject);
 	}
 
 	private void addMessageContents(HTMLNode messageNode, MailMessage message) {
@@ -200,7 +200,7 @@ public class MessageToadlet extends WebPage {
 
 		//Then add all the children recursively
 		for(MessageBank child : messageBank.listSubFolders()) {
-			addMessageBank(folderDiv, child, folderName + "." + child.getName());
+			addMessageBank(folderDiv, child, folderName + '.' + child.getName());
 		}
 
 		return folderDiv;

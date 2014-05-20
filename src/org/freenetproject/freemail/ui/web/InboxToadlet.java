@@ -184,7 +184,7 @@ public class InboxToadlet extends WebPage {
 				message.delete();
 			} else if(!req.getPartAsString("delete", 100).equals("")) {
 				if(folderName.equals("inbox." + TRASH_FOLDER)) {
-					Logger.debug(this, "Deleting [" + message + "]");
+					Logger.debug(this, "Deleting [" + message + ']');
 					message.delete();
 				} else {
 					Logger.debug(this, "Moving [" + message + "] to trash");
@@ -236,7 +236,7 @@ public class InboxToadlet extends WebPage {
 
 		//Then add all the children recursively
 		for(MessageBank child : messageBank.listSubFolders()) {
-			addMessageBank(folderDiv, child, folderName + "." + child.getName());
+			addMessageBank(folderDiv, child, folderName + '.' + child.getName());
 		}
 
 		return folderDiv;
@@ -313,8 +313,8 @@ public class InboxToadlet extends WebPage {
 
 	private void addSubfolders(List<String> folders, MessageBank folder, String name) {
 		for(MessageBank mb : folder.listSubFolders()) {
-			folders.add(name + "." + mb.getName());
-			addSubfolders(folders, mb, name + "." + mb.getName());
+			folders.add(name + '.' + mb.getName());
+			addSubfolders(folders, mb, name + '.' + mb.getName());
 		}
 	}
 

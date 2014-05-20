@@ -78,7 +78,7 @@ public class Logger {
 
 	private static synchronized void log(int l, Class<?> c, String s, String level, Throwable t) {
 		if((l & loglevel) != 0) {
-			System.err.println(logDateFormat.format(new Date()) + " " + level + "(" + c.getName() + "): " + s);
+			System.err.println(logDateFormat.format(new Date()) + ' ' + level + '(' + c.getName() + "): " + s);
 			if(t != null) {
 				t.printStackTrace(System.err);
 			}

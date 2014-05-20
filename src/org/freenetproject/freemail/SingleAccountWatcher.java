@@ -62,7 +62,7 @@ public class SingleAccountWatcher implements Runnable {
 			Logger.error(this, "Your accprops file is missing the rtskey entry. This means it is broken, you will not be able to receive new contact requests.");
 		}
 
-		this.rtsf = new RTSFetcher("KSK@"+rtskey+"-", rtsdir, account);
+		this.rtsf = new RTSFetcher("KSK@"+rtskey+ '-', rtsdir, account);
 
 		//this.mf = new MailFetcher(this.mb, inbound_dir, Freemail.getFCPConnection());
 

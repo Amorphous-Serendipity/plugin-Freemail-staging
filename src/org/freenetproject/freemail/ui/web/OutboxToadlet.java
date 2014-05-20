@@ -89,7 +89,7 @@ public class OutboxToadlet extends WebPage {
 				Identity i = wotConnection.getIdentity(message.recipient, account.getIdentity());
 				if(i != null) {
 					String domain = i.getBase32IdentityID();
-					recipient = i.getNickname() + "@" + domain + ".freemail";
+					recipient = i.getNickname() + '@' + domain + ".freemail";
 				} else {
 					recipient = null;
 				}

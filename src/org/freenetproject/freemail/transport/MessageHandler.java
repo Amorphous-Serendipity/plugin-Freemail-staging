@@ -313,8 +313,8 @@ public class MessageHandler {
 			}
 
 			String remoteIdentity = rtsProps.get("mailsite");
-			remoteIdentity = remoteIdentity.substring(remoteIdentity.indexOf("@") + 1); //Strip USK@
-			remoteIdentity = remoteIdentity.substring(0, remoteIdentity.indexOf(","));
+			remoteIdentity = remoteIdentity.substring(remoteIdentity.indexOf('@') + 1); //Strip USK@
+			remoteIdentity = remoteIdentity.substring(0, remoteIdentity.indexOf(','));
 
 			Channel channel;
 			try {

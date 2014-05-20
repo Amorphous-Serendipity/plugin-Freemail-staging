@@ -161,7 +161,7 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 
 		if(username.contains("@") && username.endsWith(".freemail")) {
 			//Extract the base32 identity string and convert it to base64
-			username = username.substring(username.indexOf("@") + 1,
+			username = username.substring(username.indexOf('@') + 1,
 			                              username.length() - ".freemail".length());
 
 			//We need to use the Freenet Base64 encoder here since it uses a slightly different set
@@ -248,7 +248,7 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 
 			/// and send the inbox too, if it matches
 			if("INBOX".matches(mbname)) {
-				this.sendState(replyprefix+" "+this.inbox.getFolderFlagsString()+" \".\" \"INBOX\"");
+				this.sendState(replyprefix+ ' ' +this.inbox.getFolderFlagsString()+" \".\" \"INBOX\"");
 			}
 		}
 
@@ -261,9 +261,9 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 		for(int i = 0; i < folders.length; i++) {
 			String fullpath = folderpath+folders[i].getName();
 
-			this.listMatchingFolders(folders[i], pattern, replyprefix, fullpath+".");
+			this.listMatchingFolders(folders[i], pattern, replyprefix, fullpath+ '.');
 			if(fullpath.matches(pattern)) {
-				this.sendState(replyprefix+" "+folders[i].getFolderFlagsString()+" \".\" \""+fullpath+"\"");
+				this.sendState(replyprefix+ ' ' +folders[i].getFolderFlagsString()+" \".\" \""+fullpath+ '"');
 			}
 		}
 	}
@@ -311,7 +311,7 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 			this.mb = tempmb;
 		}
 
-		this.sendState("FLAGS ("+IMAPMessageFlags.getAllFlagsAsString()+")");
+		this.sendState("FLAGS ("+IMAPMessageFlags.getAllFlagsAsString()+ ')');
 		this.sendState("OK [PERMANENTFLAGS ("+IMAPMessageFlags.getPermanentFlagsAsString()+")] Limited");
 
 		SortedMap<Integer, MailMessage> msgs = this.mb.listMessages();
@@ -592,7 +592,7 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 		if(attr.equals("uid")) {
 			val = Integer.toString(mmsg.getUID());
 		} else if(attr.equals("flags")) {
-			val = "(" + mmsg.flags.getFlags() + ")";
+			val = '(' + mmsg.flags.getFlags() + ')';
 		} else if(attr.equals("rfc822.size")) {
 			try {
 				val = Long.toString(mmsg.getSize());
@@ -643,12 +643,12 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 
 				val = sdf.format(new Date());
 			}
-			val = "\""+val+"\"";
+			val = '"' +val+ '"';
 		}
 
 		if(val == null)
 			return false;
-		this.ps.print(a+" "+val);
+		this.ps.print(a+ ' ' +val);
 		return true;
 	}
 
@@ -661,11 +661,11 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 		int range_len=-1;
 
 		if(attr.matches(".*<\\d+\\.\\d+>$")) {
-			String range=attr.substring(attr.indexOf("<")+1, attr.length()-1);
-			attr=attr.substring(0, attr.indexOf("<"));
+			String range=attr.substring(attr.indexOf('<')+1, attr.length()-1);
+			attr=attr.substring(0, attr.indexOf('<'));
 
-			String r_start=range.substring(0, range.indexOf("."));
-			String r_end=range.substring(range.indexOf(".")+1);
+			String r_start=range.substring(0, range.indexOf('.'));
+			String r_end=range.substring(range.indexOf('.')+1);
 			try {
 				range_start=Integer.parseInt(r_start);
 				range_len=Integer.parseInt(r_end);
@@ -686,7 +686,7 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 					this.ps.print("[]");
 				}
 				if(range_start!=-1) {
-					this.ps.print("<"+range_start+">");
+					this.ps.print("<"+range_start+ '>');
 				}
 
 				long partsize=0;
@@ -745,7 +745,7 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 		if(parts.length > 0) {
 			if(parts[0].equalsIgnoreCase("header.fields")) {
 				if(!hasSentDataName) {
-					this.ps.print("[HEADER.FIELDS "+parts[1]+"]");
+					this.ps.print("[HEADER.FIELDS "+parts[1]+ ']');
 				}
 				if(parts[1].charAt(0) == '(')
 					parts[1] = parts[1].substring(1);
@@ -908,7 +908,7 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 
 					buf.append(" FETCH FLAGS (");
 					buf.append(message.flags.getFlags());
-					buf.append(")");
+					buf.append(')');
 				}
 
 				this.sendState(buf.toString());
@@ -1026,10 +1026,10 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 			if(arg.startsWith("(")) arg = arg.substring(1);
 			if(arg.endsWith(")")) arg = arg.substring(0, arg.length() - 1);
 
-			if(!first) buf.append(" ");
+			if(!first) buf.append(' ');
 			first = false;
 			buf.append(arg);
-			buf.append(" ");
+			buf.append(' ');
 			if(arg.equalsIgnoreCase("messages")) {
 				buf.append(Integer.toString(nummessages));
 			} else if(arg.equalsIgnoreCase("recent")) {
@@ -1039,11 +1039,11 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 			} else if(arg.equalsIgnoreCase("uidnext")) {
 				buf.append(Integer.toString(lastuid + 1));
 			} else if(arg.equalsIgnoreCase("uidvalidity")) {
-				buf.append("1");
+				buf.append('1');
 			}
 		}
 
-		buf.append(")");
+		buf.append(')');
 		this.sendState(buf.toString());
 		this.reply(msg, "OK STATUS completed");
 	}
@@ -1536,29 +1536,29 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 			Logger.error(this, "Caught IOException while reading message headers: " + ioe.getMessage(), ioe);
 		}
 
-		buf.append(IMAPifyString(mmsg.getFirstHeader("Date"))+" ");
-		buf.append(IMAPifyString(mmsg.getFirstHeader("Subject"))+" ");
+		buf.append(IMAPifyString(mmsg.getFirstHeader("Date"))+ ' ');
+		buf.append(IMAPifyString(mmsg.getFirstHeader("Subject"))+ ' ');
 		// from
-		buf.append(this.IMAPifyAddress(mmsg.getFirstHeader("From"))+" ");
+		buf.append(this.IMAPifyAddress(mmsg.getFirstHeader("From"))+ ' ');
 		// sender (this should probably be the Freemail address that
 		// we got it from, except I haven't found a mail client that
 		// actually uses this part yet, so it might be pointless
-		buf.append(this.IMAPifyAddress(mmsg.getFirstHeader("x-freemail-sender"))+" ");
-		buf.append(this.IMAPifyAddress(mmsg.getFirstHeader("Reply-To"))+" ");
+		buf.append(this.IMAPifyAddress(mmsg.getFirstHeader("x-freemail-sender"))+ ' ');
+		buf.append(this.IMAPifyAddress(mmsg.getFirstHeader("Reply-To"))+ ' ');
 
-		buf.append(this.IMAPifyAddress(mmsg.getFirstHeader("To"))+" ");
-		buf.append(this.IMAPifyAddress(mmsg.getFirstHeader("CC"))+" ");
-		buf.append(this.IMAPifyAddress(mmsg.getFirstHeader("BCC"))+" ");
-		buf.append(IMAPifyString(mmsg.getFirstHeader("In-Reply-To"))+" ");
+		buf.append(this.IMAPifyAddress(mmsg.getFirstHeader("To"))+ ' ');
+		buf.append(this.IMAPifyAddress(mmsg.getFirstHeader("CC"))+ ' ');
+		buf.append(this.IMAPifyAddress(mmsg.getFirstHeader("BCC"))+ ' ');
+		buf.append(IMAPifyString(mmsg.getFirstHeader("In-Reply-To"))+ ' ');
 		buf.append(IMAPifyString(mmsg.getFirstHeader("Message-ID")));
-		buf.append(")");
+		buf.append(')');
 
 		return buf.toString();
 	}
 
 	private String IMAPifyString(String in) {
 		if(in == null) return "NIL";
-		return "\""+in.trim()+"\"";
+		return '"' +in.trim()+ '"';
 	}
 
 	private String IMAPifyAddress(String address) {
@@ -1567,10 +1567,10 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 		EmailAddress addr = new EmailAddress(address);
 
 		String retval = "((";
-		retval += this.IMAPifyString(addr.realname)+" ";
+		retval += this.IMAPifyString(addr.realname)+ ' ';
 		// SMTP Source Route. Whatever this is, it's not relevant!
 		retval += "NIL ";
-		retval += this.IMAPifyString(addr.user)+" ";
+		retval += this.IMAPifyString(addr.user)+ ' ';
 		retval += this.IMAPifyString(addr.domain);
 		retval += "))";
 
@@ -1578,8 +1578,8 @@ public class IMAPHandler extends ServerHandler implements Runnable {
 	}
 
 	private void reply(IMAPMessage msg, String reply) {
-		Logger.debug(this, "Reply: " + msg.tag + " " + reply);
-		this.ps.print(msg.tag + " " + reply + "\r\n");
+		Logger.debug(this, "Reply: " + msg.tag + ' ' + reply);
+		this.ps.print(msg.tag + ' ' + reply + "\r\n");
 	}
 
 	private void sendState(String txt) {

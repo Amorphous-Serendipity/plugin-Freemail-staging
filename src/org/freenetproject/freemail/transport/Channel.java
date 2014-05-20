@@ -205,7 +205,7 @@ class Channel {
 				String prev = channelProps.get(PropsKeys.REMOTE_ID);
 				if(prev == null) {
 					Logger.error(this, "Channel is broken because remote id is missing ("
-							+ channelDir + ")");
+							+ channelDir + ')');
 					throw new IllegalStateException("Remote id missing");
 				}
 			}
@@ -292,7 +292,7 @@ class Channel {
 	private class CTSInserter implements Runnable {
 		@Override
 		public void run() {
-			Logger.debug(this, "CTSInserter running (" + this + ")");
+			Logger.debug(this, "CTSInserter running (" + this + ')');
 
 			//Build the header of the inserted message
 			Bucket bucket;
@@ -500,7 +500,7 @@ class Channel {
 				}
 			}
 
-			String insertKey = privateKey + sendCode + "-" + sendSlot;
+			String insertKey = privateKey + sendCode + '-' + sendSlot;
 
 			InputStream messageStream = null;
 			try {
@@ -566,7 +566,7 @@ class Channel {
 
 	@Override
 	public String toString() {
-		return "Channel [" + channelDir + "]";
+		return "Channel [" + channelDir + ']';
 	}
 
 	String getRemoteIdentity() {
@@ -627,7 +627,7 @@ class Channel {
 			if(last != 0) {
 				Logger.debug(this, "Fetcher running (" + this + "), last ran " + (curTime - last) + "ms ago");
 			} else {
-				Logger.debug(this, "Fetcher running (" + this + ")");
+				Logger.debug(this, "Fetcher running (" + this + ')');
 			}
 
 			try {
@@ -696,7 +696,7 @@ class Channel {
 				//TODO: Either delete the channel or resend the RTS
 				return;
 			}
-			basekey += fetchCode + "-";
+			basekey += fetchCode + '-';
 
 			String slot;
 			while((slot = slotManager.getNextSlot()) != null) {
@@ -722,7 +722,7 @@ class Channel {
 						slotManager.slotUsed();
 					}
 
-					Logger.minor(this, "No mail in slot (fetch returned " + e.getMessage() + ")");
+					Logger.minor(this, "No mail in slot (fetch returned " + e.getMessage() + ')');
 					continue;
 				} catch (FCPException e) {
 					Logger.error(this, "Unexpected error while trying to fetch message: " + e.getMessage());
@@ -783,7 +783,7 @@ class Channel {
 		}
 
 		public void schedule(long delay, TimeUnit unit) {
-			Logger.debug(this, "Scheduling Fetcher for execution in " + delay + " " + unit.toString().toLowerCase(Locale.ROOT));
+			Logger.debug(this, "Scheduling Fetcher for execution in " + delay + ' ' + unit.toString().toLowerCase(Locale.ROOT));
 			try {
 				executor.schedule(fetcher, delay, unit);
 			} catch(RejectedExecutionException e) {
@@ -793,14 +793,14 @@ class Channel {
 
 		@Override
 		public String toString() {
-			return "Fetcher [" + channelDir + "]";
+			return "Fetcher [" + channelDir + ']';
 		}
 	}
 
 	private class RTSSender implements Runnable {
 		@Override
 		public synchronized void run() {
-			Logger.debug(this, "RTSSender running (" + this + ")");
+			Logger.debug(this, "RTSSender running (" + this + ')');
 
 			try {
 				realRun();
@@ -938,7 +938,7 @@ class Channel {
 
 			//Strip the WoT part from the key and add the Freemail path
 			String mailsiteKey = recipient.getRequestURI();
-			mailsiteKey = mailsiteKey.substring(0, mailsiteKey.indexOf("/"));
+			mailsiteKey = mailsiteKey.substring(0, mailsiteKey.indexOf('/'));
 			mailsiteKey = mailsiteKey + "/mailsite/-" + mailisteEdition + "/mailpage";
 
 			//Fetch the mailsite
@@ -1000,7 +1000,7 @@ class Channel {
 			}
 
 			String senderMailsiteKey = senderIdentity.getRequestURI();
-			senderMailsiteKey = senderMailsiteKey.substring(0, senderMailsiteKey.indexOf("/"));
+			senderMailsiteKey = senderMailsiteKey.substring(0, senderMailsiteKey.indexOf('/'));
 			senderMailsiteKey = senderMailsiteKey + "/mailsite/-" + senderMailsiteEdition + "/mailpage";
 
 			//Now build the RTS
@@ -1041,7 +1041,7 @@ class Channel {
 			//Insert
 			int slot;
 			try {
-				String key = "KSK@" + rtsKey + "-" + DateStringFactory.getKeyString();
+				String key = "KSK@" + rtsKey + '-' + DateStringFactory.getKeyString();
 				Logger.debug(this, "Inserting RTS to " + key);
 				slot = fcpClient.slotInsert(rtsMessage, key, 1, "");
 			} catch(ConnectionTerminatedException e) {
@@ -1087,7 +1087,7 @@ class Channel {
 		}
 
 		public void schedule(long delay, TimeUnit unit) {
-			Logger.debug(this, "Scheduling RTSSender for execution in " + delay + " " + unit.toString().toLowerCase(Locale.ROOT));
+			Logger.debug(this, "Scheduling RTSSender for execution in " + delay + ' ' + unit.toString().toLowerCase(Locale.ROOT));
 			try {
 				executor.schedule(this, delay, unit);
 			} catch(RejectedExecutionException e) {
@@ -1156,16 +1156,16 @@ class Channel {
 				Logger.warning(this, "Building RTS when channel is past final timeout ("
 						+ "read only=" + timeout
 						+ ", final timeout=" + (timeout + CHANNEL_TIMEOUT)
-						+ ", current time=" + System.currentTimeMillis() + ")");
+						+ ", current time=" + System.currentTimeMillis() + ')');
 			}
 
 			StringBuffer rtsMessage = new StringBuffer();
-			rtsMessage.append(RTSKeys.MAILSITE + "=" + senderMailsiteKey + "\r\n");
-			rtsMessage.append(RTSKeys.TO + "=" + recipientIdentityID + "\r\n");
-			rtsMessage.append(RTSKeys.CHANNEL + "=" + channelPrivateKey + "\r\n");
-			rtsMessage.append(RTSKeys.INITIATOR_SLOT + "=" + initiatorSlot + "\r\n");
-			rtsMessage.append(RTSKeys.RESPONDER_SLOT + "=" + responderSlot + "\r\n");
-			rtsMessage.append(RTSKeys.TIMEOUT + "=" + timeout + "\r\n");
+			rtsMessage.append(RTSKeys.MAILSITE + '=' + senderMailsiteKey + "\r\n");
+			rtsMessage.append(RTSKeys.TO + '=' + recipientIdentityID + "\r\n");
+			rtsMessage.append(RTSKeys.CHANNEL + '=' + channelPrivateKey + "\r\n");
+			rtsMessage.append(RTSKeys.INITIATOR_SLOT + '=' + initiatorSlot + "\r\n");
+			rtsMessage.append(RTSKeys.RESPONDER_SLOT + '=' + responderSlot + "\r\n");
+			rtsMessage.append(RTSKeys.TIMEOUT + '=' + timeout + "\r\n");
 			rtsMessage.append("\r\n");
 
 			byte[] rtsMessageBytes;
@@ -1246,7 +1246,7 @@ class Channel {
 
 		@Override
 		public String toString() {
-			return "RTSSender [" + channelDir + "]";
+			return "RTSSender [" + channelDir + ']';
 		}
 	}
 

@@ -85,7 +85,7 @@ public class AddAccountToadlet extends WebPage {
 
 		HTMLNode addAccountForm = pluginRespirator.addFormChild(boxContent, AddAccountToadlet.getPath(), "addAccount");
 
-		HTMLNode identity = addAccountForm.addChild("p", FreemailL10n.getString("Freemail.AddAccountToadlet.selectIdentity") + " ");
+		HTMLNode identity = addAccountForm.addChild("p", FreemailL10n.getString("Freemail.AddAccountToadlet.selectIdentity") + ' ');
 		HTMLNode ownIdSelector = identity.addChild("select", "name", "OwnIdentityID");
 
 		for(OwnIdentity oid : identitiesWithoutAccount) {
@@ -93,11 +93,11 @@ public class AddAccountToadlet extends WebPage {
 			ownIdSelector.addChild("option", "value", oid.getIdentityID(), oid.getNickname());
 		}
 
-		HTMLNode password = addAccountForm.addChild("p", FreemailL10n.getString("Freemail.AddAccountToadlet.password") + " ");
+		HTMLNode password = addAccountForm.addChild("p", FreemailL10n.getString("Freemail.AddAccountToadlet.password") + ' ');
 		password.addChild("input", new String[] {"type",     "name"},
 		                           new String[] {"password", "password"});
 
-		HTMLNode confirmPassword = addAccountForm.addChild("p", FreemailL10n.getString("Freemail.AddAccountToadlet.confirmPassword") + " ");
+		HTMLNode confirmPassword = addAccountForm.addChild("p", FreemailL10n.getString("Freemail.AddAccountToadlet.confirmPassword") + ' ');
 		confirmPassword.addChild("input", new String[] {"type",     "name"},
 		                                  new String[] {"password", "passwordVerification"});
 

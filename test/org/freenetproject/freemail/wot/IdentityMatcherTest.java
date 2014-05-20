@@ -44,7 +44,7 @@ public class IdentityMatcherTest {
 
 	@Test
 	public void fullIdentityMatch() throws PluginNotFoundException {
-		String recipient = identity.getNickname() + "@" + identity.getIdentityID() + ".freemail";
+		String recipient = identity.getNickname() + '@' + identity.getIdentityID() + ".freemail";
 		EnumSet<MatchMethod> set = EnumSet.allOf(MatchMethod.class);
 
 		runMatcherTest(recipient, set);
@@ -52,7 +52,7 @@ public class IdentityMatcherTest {
 
 	@Test
 	public void fullBase32IdentityMatch() throws PluginNotFoundException {
-		String recipient = identity.getNickname() + "@" + identity.getBase32IdentityID() + ".freemail";
+		String recipient = identity.getNickname() + '@' + identity.getBase32IdentityID() + ".freemail";
 		EnumSet<MatchMethod> set = EnumSet.of(MatchMethod.FULL_BASE32);
 
 		runMatcherTest(recipient, set);
@@ -93,7 +93,7 @@ public class IdentityMatcherTest {
 		//Check an identity string that is missing the last character
 		String id = identity.getBase32IdentityID();
 		id = id.substring(0, id.length() - 1);
-		id = identity.getNickname() + "@" + id + ".freemail";
+		id = identity.getNickname() + '@' + id + ".freemail";
 		Set<String> recipients = Collections.singleton(id);
 
 		EnumSet<MatchMethod> set = EnumSet.of(MatchMethod.FULL_BASE32);

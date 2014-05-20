@@ -115,7 +115,7 @@ class MailLog {
 
 			Integer num = e.getKey();
 			String checksum = e.getValue();
-			pw.println(num.toString()+"="+checksum);
+			pw.println(num.toString()+ '=' +checksum);
 		}
 
 		pw.flush();

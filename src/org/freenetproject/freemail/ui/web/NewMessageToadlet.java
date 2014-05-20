@@ -95,7 +95,7 @@ public class NewMessageToadlet extends WebPage {
 				addWoTNotLoadedMessage(contentNode);
 				return new GenericHTMLResponse(ctx, 200, "OK", pageNode.generate());
 			}
-			recipients.add(identity.getNickname() + "@" + identity.getIdentityID() + ".freemail");
+			recipients.add(identity.getNickname() + '@' + identity.getIdentityID() + ".freemail");
 		} else {
 			recipients.add("");
 		}
@@ -218,10 +218,10 @@ public class NewMessageToadlet extends WebPage {
 			String name = "";
 			String address = recipient;
 			if(recipient.contains("<") && recipient.contains(">")) {
-				name = recipient.substring(0, recipient.indexOf("<"));
+				name = recipient.substring(0, recipient.indexOf('<'));
 				name = name.trim();
 
-				address = recipient.substring(recipient.indexOf("<") + 1, recipient.indexOf(">"));
+				address = recipient.substring(recipient.indexOf('<') + 1, recipient.indexOf('>'));
 				address = address.trim();
 			}
 			String localPart = address.split("@", 2)[0];
@@ -241,12 +241,12 @@ public class NewMessageToadlet extends WebPage {
 			//If the domain part has non-ascii characters we won't find any
 			//matches, so handle it that way
 
-			String checkedAddress = localPart + "@" + domainPart;
+			String checkedAddress = localPart + '@' + domainPart;
 			String checkedRecipient;
 			if(name.equals("")) {
 				checkedRecipient = checkedAddress;
 			} else {
-				checkedRecipient = name + " <" + checkedAddress + ">";
+				checkedRecipient = name + " <" + checkedAddress + '>';
 			}
 			recipients.put(checkedAddress, checkedRecipient);
 		}
@@ -306,11 +306,11 @@ public class NewMessageToadlet extends WebPage {
 			local = "mail";
 		}
 		header.append("From: " + MailMessage.encodeHeader(account.getNickname())
-				+ " <" + local + "@" + account.getDomain() + ">" + "\r\n");
+				+ " <" + local + '@' + account.getDomain() + '>' + "\r\n");
 
 		header.append("Subject: " + MailMessage.encodeHeader(getBucketAsString(req.getPart("subject"))) + "\r\n");
 		header.append("Date: " + sdf.format(new Date()) + "\r\n");
-		header.append("Message-ID: <" + UUID.randomUUID() + "@" + account.getDomain() + ">\r\n");
+		header.append("Message-ID: <" + UUID.randomUUID() + '@' + account.getDomain() + ">\r\n");
 		header.append("Content-Type: text/plain; charset=UTF-8\r\n");
 		header.append("Content-Transfer-Encoding: quoted-printable\r\n");
 
@@ -392,7 +392,7 @@ public class NewMessageToadlet extends WebPage {
 		try {
 			String line = bodyReader.readLine();
 			while(line != null) {
-				body.append(">" + line + "\r\n");
+				body.append('>' + line + "\r\n");
 				line = bodyReader.readLine();
 			}
 		} finally {
@@ -412,7 +412,7 @@ public class NewMessageToadlet extends WebPage {
 
 		extraHeaders.add("References:");
 		for(String part : references.split(" ")) {
-			extraHeaders.add(" " + part);
+			extraHeaders.add(' ' + part);
 		}
 
 		HTMLNode messageBox = addInfobox(contentNode, FreemailL10n.getString("Freemail.NewMessageToadlet.boxTitle"));

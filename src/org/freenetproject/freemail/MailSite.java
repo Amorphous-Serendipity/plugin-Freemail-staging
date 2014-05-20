@@ -84,7 +84,7 @@ public class MailSite {
 
 		int actualslot = -1;
 		try {
-			actualslot = cli.slotInsert(mailpage, key, minslot, "/"+MAILPAGE);
+			actualslot = cli.slotInsert(mailpage, key, minslot, '/' +MAILPAGE);
 		} catch (ConnectionTerminatedException cte) {
 			return -1;
 		}

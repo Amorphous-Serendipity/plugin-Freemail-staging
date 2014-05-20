@@ -105,14 +105,14 @@ public class SMTPSessionTest {
 				+ "\r\n"
 				+ "This is a simple SMTP test for Freemail\r\n";
 
-		String authData = new String(Base64.encode(("\0" + TestId1Data.Identity.ID + "\0" + PASSWORD).getBytes("ASCII")), "ASCII");
+		String authData = new String(Base64.encode(('\0' + TestId1Data.Identity.ID + '\0' + PASSWORD).getBytes("ASCII")), "ASCII");
 		List<Command> commands = new LinkedList<Command>();
 		commands.add(new Command(null, "220 localhost ready"));
 		commands.add(new Command("EHLO", "250-localhost",
 		                                 "250 AUTH LOGIN PLAIN"));
 		commands.add(new Command("AUTH PLAIN " + authData, "235 Authenticated"));
-		commands.add(new Command("MAIL FROM:<" + TestId1Data.FreemailAccount.ADDRESS + ">", "250 OK"));
-		commands.add(new Command("RCPT TO:<" + TestId1Data.FreemailAccount.ADDRESS + ">", "250 OK"));
+		commands.add(new Command("MAIL FROM:<" + TestId1Data.FreemailAccount.ADDRESS + '>', "250 OK"));
+		commands.add(new Command("RCPT TO:<" + TestId1Data.FreemailAccount.ADDRESS + '>', "250 OK"));
 		commands.add(new Command("DATA", "354 Go crazy"));
 		commands.add(new Command(message + ".\r\n", "250 So be it"));
 
@@ -138,14 +138,14 @@ public class SMTPSessionTest {
 				+ "\r\n"
 				+ "This is a simple SMTP test for Freemail\r\n";
 
-		String authData = new String(Base64.encode(("\0" + TestId1Data.Identity.ID + "\0" + PASSWORD).getBytes("ASCII")), "ASCII");
+		String authData = new String(Base64.encode(('\0' + TestId1Data.Identity.ID + '\0' + PASSWORD).getBytes("ASCII")), "ASCII");
 		List<Command> commands = new LinkedList<Command>();
 		commands.add(new Command(null, "220 localhost ready"));
 		commands.add(new Command("EHLO", "250-localhost",
 		                                 "250 AUTH LOGIN PLAIN"));
 		commands.add(new Command("AUTH PLAIN " + authData, "235 Authenticated"));
-		commands.add(new Command("MAIL FROM:<" + TestId1Data.FreemailAccount.ADDRESS + ">", "250 OK"));
-		commands.add(new Command("RCPT TO:<" + TestId1Data.FreemailAccount.ADDRESS + ">", "250 OK"));
+		commands.add(new Command("MAIL FROM:<" + TestId1Data.FreemailAccount.ADDRESS + '>', "250 OK"));
+		commands.add(new Command("RCPT TO:<" + TestId1Data.FreemailAccount.ADDRESS + '>', "250 OK"));
 		commands.add(new Command("DATA", "354 Go crazy"));
 		commands.add(new Command(message + ".\r\n", "452 Message sending failed"));
 
@@ -180,14 +180,14 @@ public class SMTPSessionTest {
 				+ "This is a simple SMTP test for Freemail\r\n"
 				+ "..\r\n";
 
-		String authData = new String(Base64.encode(("\0" + TestId1Data.Identity.ID + "\0" + PASSWORD).getBytes("ASCII")), "ASCII");
+		String authData = new String(Base64.encode(('\0' + TestId1Data.Identity.ID + '\0' + PASSWORD).getBytes("ASCII")), "ASCII");
 		List<Command> commands = new LinkedList<Command>();
 		commands.add(new Command(null, "220 localhost ready"));
 		commands.add(new Command("EHLO", "250-localhost",
 		                                 "250 AUTH LOGIN PLAIN"));
 		commands.add(new Command("AUTH PLAIN " + authData, "235 Authenticated"));
-		commands.add(new Command("MAIL FROM:<" + TestId1Data.FreemailAccount.ADDRESS + ">", "250 OK"));
-		commands.add(new Command("RCPT TO:<" + TestId1Data.FreemailAccount.ADDRESS + ">", "250 OK"));
+		commands.add(new Command("MAIL FROM:<" + TestId1Data.FreemailAccount.ADDRESS + '>', "250 OK"));
+		commands.add(new Command("RCPT TO:<" + TestId1Data.FreemailAccount.ADDRESS + '>', "250 OK"));
 		commands.add(new Command("DATA", "354 Go crazy"));
 		commands.add(new Command(padded + ".\r\n", "250 So be it"));
 
@@ -222,7 +222,7 @@ public class SMTPSessionTest {
 				+ "\r\n"
 				+ "This is test message 2.\r\n";
 
-		String authData = new String(Base64.encode(("\0" + TestId1Data.Identity.ID + "\0" + PASSWORD).getBytes("ASCII")), "ASCII");
+		String authData = new String(Base64.encode(('\0' + TestId1Data.Identity.ID + '\0' + PASSWORD).getBytes("ASCII")), "ASCII");
 		List<Command> commands = new LinkedList<Command>();
 		commands.add(new Command(null, "220 localhost ready"));
 		commands.add(new Command("EHLO", "250-localhost",
@@ -230,14 +230,14 @@ public class SMTPSessionTest {
 		commands.add(new Command("AUTH PLAIN " + authData, "235 Authenticated"));
 
 		//Message 1
-		commands.add(new Command("MAIL FROM:<" + TestId1Data.FreemailAccount.ADDRESS + ">", "250 OK"));
-		commands.add(new Command("RCPT TO:<" + TestId1Data.FreemailAccount.ADDRESS + ">", "250 OK"));
+		commands.add(new Command("MAIL FROM:<" + TestId1Data.FreemailAccount.ADDRESS + '>', "250 OK"));
+		commands.add(new Command("RCPT TO:<" + TestId1Data.FreemailAccount.ADDRESS + '>', "250 OK"));
 		commands.add(new Command("DATA", "354 Go crazy"));
 		commands.add(new Command(message1 + ".\r\n", "250 So be it"));
 
 		//Message 2
-		commands.add(new Command("MAIL FROM:<" + TestId1Data.FreemailAccount.ADDRESS + ">", "250 OK"));
-		commands.add(new Command("RCPT TO:<" + TestId1Data.FreemailAccount.ADDRESS + ">", "250 OK"));
+		commands.add(new Command("MAIL FROM:<" + TestId1Data.FreemailAccount.ADDRESS + '>', "250 OK"));
+		commands.add(new Command("RCPT TO:<" + TestId1Data.FreemailAccount.ADDRESS + '>', "250 OK"));
 		commands.add(new Command("DATA", "354 Go crazy"));
 		commands.add(new Command(message2 + ".\r\n", "250 So be it"));
 

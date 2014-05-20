@@ -75,7 +75,7 @@ public class FreemailCli extends Freemail {
 				System.out.println("  Changes the password for the given account");
 				return;
 			} else {
-				System.out.println("Unknown option: '"+args[i]+"'");
+				System.out.println("Unknown option: '"+args[i]+ '\'');
 				return;
 			}
 		}

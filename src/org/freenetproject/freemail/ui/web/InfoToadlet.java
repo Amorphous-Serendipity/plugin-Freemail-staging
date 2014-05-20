@@ -50,7 +50,7 @@ class InfoToadlet extends WebPage {
 	private void addInfoLine(HTMLNode parent, String title, String content, String className) {
 		HTMLNode line = parent.addChild("span", "class", className);
 		line.addChild("span", "class", "title", title);
-		line.addChild("#", " " + content);
+		line.addChild("#", ' ' + content);
 		parent.addChild("br");
 	}
 
@@ -61,7 +61,7 @@ class InfoToadlet extends WebPage {
 		if(local.length() == 0) {
 			local = "mail";
 		}
-		EmailAddress address = new EmailAddress(local + "@" + account.getDomain());
+		EmailAddress address = new EmailAddress(local + '@' + account.getDomain());
 
 		addInfoLine(accountBox, FreemailL10n.getString("Freemail.InfoToadlet.email-title"), address.toString(),
 				"email");

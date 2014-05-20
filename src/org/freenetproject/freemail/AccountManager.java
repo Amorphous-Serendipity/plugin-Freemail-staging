@@ -207,7 +207,7 @@ public class AccountManager {
 		accfile.put("asymkey.privexponent", priv.getExponent().toString(32));
 
 		String privateKey = oid.getInsertURI();
-		privateKey = privateKey.substring(0, privateKey.indexOf("/"));
+		privateKey = privateKey.substring(0, privateKey.indexOf('/'));
 		privateKey = privateKey + "/mailsite/";
 		accfile.put("mailsite.privkey", privateKey);
 
@@ -320,7 +320,7 @@ public class AccountManager {
 			}
 
 			try {
-				putWelcomeMessage(account, new EmailAddress(local + "@" + account.getDomain()));
+				putWelcomeMessage(account, new EmailAddress(local + '@' + account.getDomain()));
 			} catch (IOException e) {
 				//FIXME: Handle this properly
 				Logger.error(this, "Failed while sending welcome message to " + oid);

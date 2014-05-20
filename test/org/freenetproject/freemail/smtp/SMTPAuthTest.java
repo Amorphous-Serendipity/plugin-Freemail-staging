@@ -60,7 +60,7 @@ public class SMTPAuthTest extends SMTPTestBase {
 	 */
 	@Test
 	public void rejectsSecondAuth() throws IOException {
-		final String authData = new String(Base64.encode(("\0" + BASE64_USERNAME + "\0password").getBytes("ASCII")), "ASCII");
+		final String authData = new String(Base64.encode(('\0' + BASE64_USERNAME + "\0password").getBytes("ASCII")), "ASCII");
 
 		List<String> commands = new LinkedList<String>();
 		commands.add("AUTH PLAIN " + authData);
@@ -83,7 +83,7 @@ public class SMTPAuthTest extends SMTPTestBase {
 		List<String> commands = new LinkedList<String>();
 		commands.add("AUTH PLAIN");
 
-		final String authData = new String(Base64.encode((BASE64_USERNAME + "\0" + BASE64_USERNAME + "\0password").getBytes("ASCII")), "ASCII");
+		final String authData = new String(Base64.encode((BASE64_USERNAME + '\0' + BASE64_USERNAME + "\0password").getBytes("ASCII")), "ASCII");
 		commands.add(authData);
 
 		List<String> expectedResponse = new LinkedList<String>();
@@ -98,7 +98,7 @@ public class SMTPAuthTest extends SMTPTestBase {
 	public void correctAuthPlainInitial() throws IOException {
 		List<String> commands = new LinkedList<String>();
 
-		final String authData = new String(Base64.encode((BASE64_USERNAME + "\0" + BASE64_USERNAME + "\0password").getBytes("ASCII")), "ASCII");
+		final String authData = new String(Base64.encode((BASE64_USERNAME + '\0' + BASE64_USERNAME + "\0password").getBytes("ASCII")), "ASCII");
 		commands.add("AUTH PLAIN " + authData);
 
 		List<String> expectedResponse = new LinkedList<String>();
@@ -112,7 +112,7 @@ public class SMTPAuthTest extends SMTPTestBase {
 	public void plainAuthWithoutAuthzid() throws IOException {
 		List<String> commands = new LinkedList<String>();
 
-		final String authData = new String(Base64.encode(("\0" + BASE64_USERNAME + "\0password").getBytes("ASCII")), "ASCII");
+		final String authData = new String(Base64.encode(('\0' + BASE64_USERNAME + "\0password").getBytes("ASCII")), "ASCII");
 		commands.add("AUTH PLAIN " + authData);
 
 		List<String> expectedResponse = new LinkedList<String>();
@@ -180,7 +180,7 @@ public class SMTPAuthTest extends SMTPTestBase {
 	 */
 	@Test
 	public void plainAuthTwoUsersValidPassword() throws IOException {
-		String authData = new String(Base64.encode((BASE64_USERNAMES[0] + "\0" + BASE64_USERNAMES[1] + "\0password").getBytes("ASCII")), "ASCII");
+		String authData = new String(Base64.encode((BASE64_USERNAMES[0] + '\0' + BASE64_USERNAMES[1] + "\0password").getBytes("ASCII")), "ASCII");
 
 		List<String> commands = new LinkedList<String>();
 		commands.add("AUTH PLAIN " + authData);

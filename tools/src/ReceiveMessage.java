@@ -112,7 +112,7 @@ public class ReceiveMessage {
 				throw new AssertionError("BYE greeting path isn't implemented");
 			}
 			if(!parts[1].equals("OK")) {
-				throw new AssertionError("Received unknown greeting (parts[1]=" + parts[1] + ")");
+				throw new AssertionError("Received unknown greeting (parts[1]=" + parts[1] + ')');
 			}
 
 			//Check if greeting contains capabilities
@@ -132,7 +132,7 @@ public class ReceiveMessage {
 				throw new IllegalStateException("IMAPSession in wrong state: " + state);
 			}
 
-			String tag = sendCommand("LOGIN \"" + username + "\" \"" + password + "\"");
+			String tag = sendCommand("LOGIN \"" + username + "\" \"" + password + '"');
 			String reply = readLine();
 
 			if(!reply.startsWith(tag)) {
@@ -201,7 +201,7 @@ public class ReceiveMessage {
 			} else if(line.startsWith("* OK")) {
 				//Ignore
 			} else {
-				throw new AssertionError("parseUntagged not implemented (line=" + line + ")");
+				throw new AssertionError("parseUntagged not implemented (line=" + line + ')');
 			}
 		}
 
@@ -232,8 +232,8 @@ public class ReceiveMessage {
 			final String tag = Integer.toString(nextTagToSend);
 			nextTagToSend++;
 
-			System.out.println(">>> " + tag + " " + cmd);
-			output.print(tag + " " + cmd + "\r\n");
+			System.out.println(">>> " + tag + ' ' + cmd);
+			output.print(tag + ' ' + cmd + "\r\n");
 			output.flush();
 
 			return tag;

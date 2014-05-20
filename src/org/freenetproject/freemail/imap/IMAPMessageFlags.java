@@ -61,7 +61,7 @@ public class IMAPMessageFlags {
 
 		for(i = 0; i < allFlags.length; i++) {
 			if(!first)
-				buf.append(" ");
+				buf.append(' ');
 			first = false;
 			buf.append(allFlags[i]);
 		}
@@ -76,7 +76,7 @@ public class IMAPMessageFlags {
 
 		for(i = 0; i < permanentFlags.length; i++) {
 			if(!first)
-				buf.append(" ");
+				buf.append(' ');
 			first = false;
 			buf.append(permanentFlags[i]);
 		}

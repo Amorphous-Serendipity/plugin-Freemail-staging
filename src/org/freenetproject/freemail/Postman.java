@@ -114,8 +114,8 @@ public abstract class Postman {
 				bmsg.addHeader("To", origFrom);
 
 				//FIXME: We should add a message id even if we don't get the from address
-				String toDomain = origFrom.substring(origFrom.lastIndexOf("@") + 1);
-				bmsg.addHeader("Message-id", "<" + MailMessage.generateMessageID(toDomain) + ">");
+				String toDomain = origFrom.substring(origFrom.lastIndexOf('@') + 1);
+				bmsg.addHeader("Message-id", '<' + MailMessage.generateMessageID(toDomain) + '>');
 			}
 			bmsg.addHeader("Date", sdf.format(new Date()));
 			bmsg.addHeader("MIME-Version", "1.0");
@@ -125,7 +125,7 @@ public abstract class Postman {
 			for(i = 0; i < BOUNDARY_LENGTH; i++) {
 				boundary += (char)(rnd.nextInt(25) + (int)'a');
 			}
-			bmsg.addHeader("Content-Type", "Multipart/Mixed; boundary=\""+boundary+"\"");
+			bmsg.addHeader("Content-Type", "Multipart/Mixed; boundary=\""+boundary+ '"');
 
 			PrintStream ps = bmsg.writeHeadersAndGetStream();
 

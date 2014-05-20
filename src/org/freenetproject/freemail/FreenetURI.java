@@ -31,8 +31,8 @@ public class FreenetURI {
 	private static final String SSK_HASH_REGEX = BASE64_REGEXP + "{42,44}";
 	private static final String SSK_KEY_REGEX = SSK_HASH_REGEX;
 	private static final String SSK_EXTRA_REGEX = BASE64_REGEXP + "{7}";
-	private static final String SSK_REGEX = "(freenet:)?SSK@" + SSK_HASH_REGEX + "," + SSK_KEY_REGEX + "," + SSK_EXTRA_REGEX;
-	private static final String USK_REGEX = "(freenet:)?USK@" + SSK_HASH_REGEX + "," + SSK_KEY_REGEX + "," + SSK_EXTRA_REGEX;
+	private static final String SSK_REGEX = "(freenet:)?SSK@" + SSK_HASH_REGEX + ',' + SSK_KEY_REGEX + ',' + SSK_EXTRA_REGEX;
+	private static final String USK_REGEX = "(freenet:)?USK@" + SSK_HASH_REGEX + ',' + SSK_KEY_REGEX + ',' + SSK_EXTRA_REGEX;
 	private static final String USK_SITENAME_REGEX = "\\w+";
 	private static final String USK_EDITION_REGEX = "-?[0-9]+";
 
@@ -90,10 +90,10 @@ public class FreenetURI {
 	 */
 	public static boolean checkSSK(String key) {
 		//Valid SSK, possibly with sitename and filename
-		if(key.matches("^" + SSK_REGEX + "/.*$")) return true;
+		if(key.matches('^' + SSK_REGEX + "/.*$")) return true;
 
 		//Valid SSK without trailing /
-		if(key.matches("^" + SSK_REGEX + "$")) return true;
+		if(key.matches('^' + SSK_REGEX + '$')) return true;
 
 		return false;
 	}
@@ -105,16 +105,16 @@ public class FreenetURI {
 	 */
 	public static boolean checkUSK(String key) {
 		//Valid USK with sitename, edition and filename
-		if(key.matches("^" + USK_REGEX + "/" + USK_SITENAME_REGEX + "/" + USK_EDITION_REGEX + "/.*$")) return true;
+		if(key.matches('^' + USK_REGEX + '/' + USK_SITENAME_REGEX + '/' + USK_EDITION_REGEX + "/.*$")) return true;
 
 		//Valid USK with sitename, edition (optional trailing /)
-		if(key.matches("^" + USK_REGEX + "/" + USK_SITENAME_REGEX + "/" + USK_EDITION_REGEX + "/{0,1}$")) return true;
+		if(key.matches('^' + USK_REGEX + '/' + USK_SITENAME_REGEX + '/' + USK_EDITION_REGEX + "/{0,1}$")) return true;
 
 		//Valid USK with sitename but no edition (optional trailing /)
-		if(key.matches("^" + USK_REGEX + "/" + USK_SITENAME_REGEX + "/{0,1}$")) return true;
+		if(key.matches('^' + USK_REGEX + '/' + USK_SITENAME_REGEX + "/{0,1}$")) return true;
 
 		//Valid USK without sitename (optional trailing /)
-		if(key.matches("^" + USK_REGEX + "/{0,1}$")) return true;
+		if(key.matches('^' + USK_REGEX + "/{0,1}$")) return true;
 
 		return false;
 	}
@@ -127,7 +127,7 @@ public class FreenetURI {
 	 * @return {@code true} if {@code key} is a valid SSK hash
 	 */
 	public static boolean checkSSKHash(String hash) {
-		return hash.matches("^" + SSK_HASH_REGEX + "$");
+		return hash.matches('^' + SSK_HASH_REGEX + '$');
 	}
 
 	/*

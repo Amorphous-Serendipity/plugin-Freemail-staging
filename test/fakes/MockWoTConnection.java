@@ -82,7 +82,7 @@ public class MockWoTConnection implements WoTConnection {
 
 	@Override
 	public Identity getIdentity(String identity, String truster) throws PluginNotFoundException {
-		Logger.debug(this, "getIdentity(identity=" + identity + ", truster=" + truster + ")");
+		Logger.debug(this, "getIdentity(identity=" + identity + ", truster=" + truster + ')');
 
 		if(identityMap == null) {
 			return null;
@@ -107,7 +107,7 @@ public class MockWoTConnection implements WoTConnection {
 
 	@Override
 	public String getProperty(String identity, String key) throws PluginNotFoundException {
-		Logger.debug(this, "getProperty(identity=" + identity + ", key=" + key + ")");
+		Logger.debug(this, "getProperty(identity=" + identity + ", key=" + key + ')');
 
 		if(properties == null) {
 			return null;

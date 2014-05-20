@@ -71,7 +71,7 @@ public class MockFreemail extends Freemail {
 
 	@Override
 	public void setConfigProp(String key, String val) {
-		Logger.debug(this, "setConfigProp(key=" + key + ", val=" + val + ")");
+		Logger.debug(this, "setConfigProp(key=" + key + ", val=" + val + ')');
 		super.setConfigProp(key, val);
 	}
 
@@ -83,7 +83,7 @@ public class MockFreemail extends Freemail {
 
 	@Override
 	public ScheduledExecutorService getExecutor(TaskType type) {
-		Logger.debug(this, "getExecutor(type=" + type + ")");
+		Logger.debug(this, "getExecutor(type=" + type + ')');
 		return super.getExecutor(type);
 	}
 }

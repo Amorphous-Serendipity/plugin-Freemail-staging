@@ -122,7 +122,7 @@ public class SendMessage {
 
 			final String authData;
 			try {
-				final byte[] authBytes = ("\0" + username + "\0" + password).getBytes("UTF-8");
+				final byte[] authBytes = ('\0' + username + '\0' + password).getBytes("UTF-8");
 				authData = new String(Base64.encode(authBytes), "ASCII");
 			} catch (UnsupportedEncodingException e) {
 				//Both ASCII and UTF-8 charsets are guaranteed to be available
@@ -146,7 +146,7 @@ public class SendMessage {
 		public void sendMessage(final String from, final List<String> recipients,
 		                        final BufferedReader message) throws IOException {
 			//MAIL FROM
-			System.out.println(">>> MAIL FROM:<" + from + ">");
+			System.out.println(">>> MAIL FROM:<" + from + '>');
 			output.print("MAIL FROM:<" + from + ">\r\n");
 			output.flush();
 			String line = input.readLine();
@@ -157,7 +157,7 @@ public class SendMessage {
 
 			//RCPT TO
 			for(String recipient : recipients) {
-				System.out.println(">>> RCPT TO:<" + recipient  + ">");
+				System.out.println(">>> RCPT TO:<" + recipient  + '>');
 				output.print("RCPT TO:<" + recipient + ">\r\n");
 				output.flush();
 				line = input.readLine();

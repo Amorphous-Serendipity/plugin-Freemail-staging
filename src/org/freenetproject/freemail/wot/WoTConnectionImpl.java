@@ -266,7 +266,7 @@ class WoTConnectionImpl implements WoTConnection {
 		Iterator<String> msgContentIterator = msg.sfs.keyIterator();
 		while(msgContentIterator.hasNext()) {
 			String key = msgContentIterator.next();
-			Logger.debug(this, key + "=" + msg.sfs.get(key));
+			Logger.debug(this, key + '=' + msg.sfs.get(key));
 		}
 
 		//Synchronize on pluginTalker so only one message can be sent at a time
@@ -295,7 +295,7 @@ class WoTConnectionImpl implements WoTConnection {
 			}
 		}
 		requestTimer.log(this, "Time spent waiting for WoT request " + msg.sfs.get("Message") + " (reply was "
-				+ retValue.sfs.get("Message") + ")");
+				+ retValue.sfs.get("Message") + ')');
 
 		String replyType = retValue.sfs.get("Message");
 		for(String expectedMessageType : expectedMessageTypes) {
@@ -312,7 +312,7 @@ class WoTConnectionImpl implements WoTConnection {
 		Iterator<String> keyIterator = retValue.sfs.keyIterator();
 		while(keyIterator.hasNext()) {
 			String key = keyIterator.next();
-			Logger.debug(this, key + "=" + retValue.sfs.get(key));
+			Logger.debug(this, key + '=' + retValue.sfs.get(key));
 		}
 
 		return retValue;
@@ -329,7 +329,7 @@ class WoTConnectionImpl implements WoTConnection {
 
 		@Override
 		public String toString() {
-			return "[" + sfs + "] [" + data + "]";
+			return "[" + sfs + "] [" + data + ']';
 		}
 	}
 

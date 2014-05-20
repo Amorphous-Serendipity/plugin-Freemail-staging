@@ -236,7 +236,7 @@ public class SMTPHandler extends ServerHandler implements Runnable {
 
 		if(uname.contains("@") && uname.endsWith(".freemail")) {
 			//Extract the base32 identity string and convert it to base64
-			uname = uname.substring(uname.indexOf("@") + 1,
+			uname = uname.substring(uname.indexOf('@') + 1,
 					uname.length() - ".freemail".length());
 
 			//We need to use the Freenet Base64 encoder here since it uses a slightly different set

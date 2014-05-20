@@ -200,10 +200,10 @@ public class MailHeaderFilterTest {
 	@Test
 	public void fromAddressUppercaseDomain() throws IOException {
 		List<String> input = new LinkedList<String>();
-		input.add("From: " + TestId1Data.Identity.NICKNAME + "@" + TestId1Data.BASE32_ID.toUpperCase(Locale.ROOT) + ".freemail");
+		input.add("From: " + TestId1Data.Identity.NICKNAME + '@' + TestId1Data.BASE32_ID.toUpperCase(Locale.ROOT) + ".freemail");
 
 		List<String> output = new LinkedList<String>();
-		output.add("From: " + TestId1Data.Identity.NICKNAME + "@" + TestId1Data.BASE32_ID.toUpperCase(Locale.ROOT) + ".freemail");
+		output.add("From: " + TestId1Data.Identity.NICKNAME + '@' + TestId1Data.BASE32_ID.toUpperCase(Locale.ROOT) + ".freemail");
 
 		runSimpleTest(input, output);
 	}

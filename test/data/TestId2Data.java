@@ -48,7 +48,7 @@ public class TestId2Data {
 
 
 	//FIXME: This will almost certainly break at some point for tests running around midnight UTC
-	public static final String RTSKEY = "KSK@" + RTS_BASE + "-" + DateStringFactory.getKeyString();
+	public static final String RTSKEY = "KSK@" + RTS_BASE + '-' + DateStringFactory.getKeyString();
 
 	public static class Identity {
 		public static final String ID = BASE64_ID;
@@ -63,8 +63,8 @@ public class TestId2Data {
 	}
 
 	public static class FreemailAccount {
-		public static final String ADDRESS = NICKNAME + "@" + BASE32_ID + ".freemail";
-		public static final String ADDRESS_WITH_ANGLE = NICKNAME + "<" + ADDRESS + ">";
+		public static final String ADDRESS = NICKNAME + '@' + BASE32_ID + ".freemail";
+		public static final String ADDRESS_WITH_ANGLE = NICKNAME + '<' + ADDRESS + '>';
 
 		public static final String IDENTITY = BASE64_ID;
 
@@ -76,12 +76,12 @@ public class TestId2Data {
 		public static final String ACCPROPS_ASYMKEY_PRIVEXPONENT = "asymkey.privexponent=" + PRIVEXPONENT;
 
 		public static final String ACCPROPS_CONTENT =
-				ACCPROPS_ASYMKEY_MODULUS + "\n"
-				+ ACCPROPS_NICKNAME + "\n"
-				+ ACCPROPS_RTSKEY + "\n"
-				+ ACCPROPS_ASYMKEY_PUBEXPONENT + "\n"
-				+ ACCPROPS_MAILSITE_PRIVKEY + "\n"
-				+ ACCPROPS_ASYMKEY_PRIVEXPONENT + "\n";
+				ACCPROPS_ASYMKEY_MODULUS + '\n'
+				+ ACCPROPS_NICKNAME + '\n'
+				+ ACCPROPS_RTSKEY + '\n'
+				+ ACCPROPS_ASYMKEY_PUBEXPONENT + '\n'
+				+ ACCPROPS_MAILSITE_PRIVKEY + '\n'
+				+ ACCPROPS_ASYMKEY_PRIVEXPONENT + '\n';
 	}
 
 	public static class Mailsite {
@@ -92,9 +92,9 @@ public class TestId2Data {
 		public static final String ASYMKEY_PUBEXPONENT = "asymkey.pubexponent=" + PUBEXPONENT;
 
 		public static final String CONTENT =
-				RTSKEY + "\n"
-				+ ASYMKEY_MODULUS + "\n"
-				+ ASYMKEY_PUBEXPONENT + "\n";
+				RTSKEY + '\n'
+				+ ASYMKEY_MODULUS + '\n'
+				+ ASYMKEY_PUBEXPONENT + '\n';
 
 		@SuppressWarnings("hiding")
 		public static final String REQUEST_KEY = TestId2Data.REQUEST_KEY + "/mailsite/-1/mailpage";

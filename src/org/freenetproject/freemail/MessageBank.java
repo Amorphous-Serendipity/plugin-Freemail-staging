@@ -107,7 +107,7 @@ public class MessageBank {
 			retval.append("\\HasNoChildren");
 		}
 
-		retval.append(")");
+		retval.append(')');
 		return retval.toString();
 	}
 
@@ -219,7 +219,7 @@ public class MessageBank {
 		File targetdir = new File(this.dir, name);
 
 		//Check for a ghost directory left by old versions of Freemail
-		File ghostdir = new File(this.dir, "."+name);
+		File ghostdir = new File(this.dir, '.' +name);
 		if(ghostdir.exists()) {
 			File[] files = ghostdir.listFiles();
 			for(int i = 0; i < files.length; i++) {

@@ -144,11 +144,11 @@ public class MailHeaderFilter {
 	private String filterHeader(String name, String val) {
 		//Check for illegal characters
 		if(name.matches(".*[^\\u0000-\\u007F]+.*")) {
-			Logger.error(this, "Header name contains 8bit character(s), dropping (name=" + name + ")");
+			Logger.error(this, "Header name contains 8bit character(s), dropping (name=" + name + ')');
 			return null;
 		}
 		if(val.matches(".*[^\\u0000-\\u007F]+.*")) {
-			Logger.error(this, "Header value contains 8bit character(s) (name=" + name + ", value=" + val + ")");
+			Logger.error(this, "Header value contains 8bit character(s) (name=" + name + ", value=" + val + ')');
 			//These should be dropped eventually, but we still have bugs
 			//related to this so just log for now
 		}
@@ -177,7 +177,7 @@ public class MailHeaderFilter {
 
 			Date d = MailMessage.parseDate(val);
 			if(d == null) {
-				Logger.warning(this, "Dropping date because we couldn't parse it (" + val + ")");
+				Logger.warning(this, "Dropping date because we couldn't parse it (" + val + ')');
 				return null;
 			}
 
@@ -199,19 +199,19 @@ public class MailHeaderFilter {
 
 			// It's something else, so just replace it with a new message-id
 			Logger.normal(this, "Replacing message id header");
-			return "<" + MailMessage.generateMessageID(sender.getDomain()) + ">";
+			return '<' + MailMessage.generateMessageID(sender.getDomain()) + '>';
 		} else if(name.equalsIgnoreCase("From")) {
 			EmailAddress address;
 			try {
 				address = new EmailAddress(val);
 			} catch (IllegalArgumentException e) {
 				Logger.minor(this, "From header didn't contain a valid email, dropping");
-				return sender.getNickname() + "@" + sender.getDomain();
+				return sender.getNickname() + '@' + sender.getDomain();
 			}
 
 			if(!address.domain.equalsIgnoreCase(sender.getDomain())) {
 				Logger.minor(this,  "");
-				return sender.getNickname() + "@" + sender.getDomain();
+				return sender.getNickname() + '@' + sender.getDomain();
 			}
 
 			return val;

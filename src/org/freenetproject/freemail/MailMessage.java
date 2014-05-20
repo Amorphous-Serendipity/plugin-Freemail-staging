@@ -259,7 +259,7 @@ public class MailMessage {
 				// continuation of previous line
 				if(parts == null || parts[1] == null)
 					continue;
-				parts[1] += " "+line.trim();
+				parts[1] += ' ' +line.trim();
 			} else {
 				if(parts != null)
 					this.addHeader(parts[0], parts[1]);
@@ -357,7 +357,7 @@ public class MailMessage {
 	public void storeFlags() {
 		String[] parts = this.file.getName().split(",");
 
-		String newname = parts[0] + "," + this.flags.getShortFlagString();
+		String newname = parts[0] + ',' + this.flags.getShortFlagString();
 		File newfile = new File(this.file.getParentFile(), newname);
 
 		if(!file.getName().equals(newfile.getName())) {
@@ -365,7 +365,7 @@ public class MailMessage {
 				Logger.debug(this, "Message moved from " + file + " to " + newfile);
 				this.file = newfile;
 			} else {
-				Logger.error(this, "Rename failed (from " + file + " to " + newfile + ")");
+				Logger.error(this, "Rename failed (from " + file + " to " + newfile + ')');
 			}
 		}
 	}
@@ -421,12 +421,12 @@ public class MailMessage {
 			return null;
 		}
 
-		int charsetEnd = header.indexOf("?", offset + "=?".length());
+		int charsetEnd = header.indexOf('?', offset + "=?".length());
 		if(charsetEnd == -1) {
 			return null;
 		}
 
-		int encodingEnd = header.indexOf("?", charsetEnd + "?".length());
+		int encodingEnd = header.indexOf('?', charsetEnd + "?".length());
 		if(encodingEnd == -1) {
 			return null;
 		}
@@ -547,7 +547,7 @@ public class MailMessage {
 			Logger.error(MailMessage.class, "Domain passed to generateMessageID() was null", new Exception());
 		}
 
-		return messageIdRandom.nextLong() + "." + messageIdRandom.nextLong() + "@" + domain;
+		return messageIdRandom.nextLong() + "." + messageIdRandom.nextLong() + '@' + domain;
 	}
 
 	public static String encodeHeader(String header) {
@@ -569,7 +569,7 @@ public class MailMessage {
 			result.append("=?UTF-8?Q?");
 			while(bytes.hasRemaining()) {
 				byte b = bytes.get();
-				result.append("=");
+				result.append('=');
 				String encodedString = new String(Hex.encode(new byte[] {b}), utf8).toUpperCase(Locale.ROOT);
 				result.append(encodedString);
 			}

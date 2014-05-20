@@ -130,12 +130,12 @@ public abstract class SlotManager {
 		Enumeration<Slot> e = this.slots.elements();
 		boolean first = true;
 		while(e.hasMoreElements()) {
-			if(!first) buf.append(",");
+			if(!first) buf.append(',');
 			first = false;
 			Slot s = e.nextElement();
 			buf.append(s.slot);
 			if(s.time_added > 0)
-				buf.append("=").append(Long.toString(s.time_added));
+				buf.append('=').append(Long.toString(s.time_added));
 		}
 		this.cb.saveSlots(buf.toString(), this.userdata);
 	}

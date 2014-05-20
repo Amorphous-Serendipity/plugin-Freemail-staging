@@ -176,7 +176,7 @@ public class FCPMessage {
 			String hdr = e.nextElement();
 			String val = this.headers.get(hdr);
 
-			buf.append(hdr+"="+val+"\r\n");
+			buf.append(hdr+ '=' +val+"\r\n");
 		}
 
 		if(this.outData != null) {

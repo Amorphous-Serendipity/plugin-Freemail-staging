@@ -29,6 +29,6 @@ public class FCPProtocolException extends FCPException {
 
 	@Override
 	public String toString() {
-		return "FCP Protocol Error (error code " + errorcode + ": " + codeDescription + ")";
+		return "FCP Protocol Error (error code " + errorcode + ": " + codeDescription + ')';
 	}
 }
