@@ -147,7 +147,7 @@ public class SingleAccountWatcher implements Runnable {
 				if(wotConnection != null) {
 					Timer propertyUpdate = Timer.start();
 					try {
-						wotConnection.setProperty(account.getIdentity(), WoTProperties.MAILSITE_EDITION, "" + edition);
+						wotConnection.setProperty(account.getIdentity(), WoTProperties.MAILSITE_EDITION, String.valueOf(edition));
 					} catch(PluginNotFoundException e) {
 						//In most cases this doesn't matter since the edition doesn't
 						//change very often anyway

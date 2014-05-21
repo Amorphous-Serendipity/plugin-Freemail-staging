@@ -279,7 +279,7 @@ public class NewMessageToadlet extends WebPage {
 			HTMLNode contentNode = page.content;
 
 			HTMLNode errorBox = addErrorbox(contentNode, FreemailL10n.getString("Freemail.NewMessageToadlet.ambigiousIdentitiesTitle"));
-			HTMLNode errorPara = errorBox.addChild("p", FreemailL10n.getString("Freemail.NewMessageToadlet.ambigiousIdentities", "count", "" + failedRecipients.size()));
+			HTMLNode errorPara = errorBox.addChild("p", FreemailL10n.getString("Freemail.NewMessageToadlet.ambigiousIdentities", "count", String.valueOf(failedRecipients.size())));
 			HTMLNode identityList = errorPara.addChild("ul");
 			for(String s : failedRecipients) {
 				identityList.addChild("li", s);

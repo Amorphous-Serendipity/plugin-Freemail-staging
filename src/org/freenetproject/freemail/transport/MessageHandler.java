@@ -217,7 +217,7 @@ public class MessageHandler {
 
 			long msgNum = getMessageNumber(rcptOutbox);
 			String identifier = Long.toString(msgNum);
-			File messageFile = new File(rcptOutbox, "" + identifier);
+			File messageFile = new File(rcptOutbox, identifier);
 
 			if(!messageFile.createNewFile()) {
 				Logger.error(this, "Message file " + messageFile + " already exists");
@@ -272,7 +272,7 @@ public class MessageHandler {
 			}
 
 			//The channel didn't exist or it has timed out, so create a new one
-			File newChannelDir = new File(channelDir, "" + nextChannelNum.getAndIncrement());
+			File newChannelDir = new File(channelDir, String.valueOf(nextChannelNum.getAndIncrement()));
 			if(!newChannelDir.mkdir()) {
 				Logger.error(this, "Couldn't create the channel directory");
 				return null;
@@ -306,7 +306,7 @@ public class MessageHandler {
 
 			//Create a new channel from the RTS values
 			Logger.debug(this, "Creating new channel from RTS");
-			File newChannelDir = new File(channelDir, "" + nextChannelNum.getAndIncrement());
+			File newChannelDir = new File(channelDir, String.valueOf(nextChannelNum.getAndIncrement()));
 			if(!newChannelDir.mkdir()) {
 				Logger.error(this, "Couldn't create the channel directory");
 				return;
@@ -433,7 +433,7 @@ public class MessageHandler {
 					Logger.error(this, "Parsing of next message number failed, was " + rawNumber);
 				}
 			}
-			props.put(IndexKeys.NEXT_MESSAGE_NUMBER, "" + (number + 1));
+			props.put(IndexKeys.NEXT_MESSAGE_NUMBER, String.valueOf(number + 1));
 			return number;
 		}
 	}
@@ -486,9 +486,9 @@ public class MessageHandler {
 						long curTime = System.currentTimeMillis();
 						String firstSentTime = props.get(identifier + IndexKeys.FIRST_SEND_TIME);
 						if(firstSentTime == null) {
-							props.put(identifier + IndexKeys.FIRST_SEND_TIME, "" + curTime);
+							props.put(identifier + IndexKeys.FIRST_SEND_TIME, String.valueOf(curTime));
 						}
-						props.put(identifier + IndexKeys.LAST_SEND_TIME, "" + curTime);
+						props.put(identifier + IndexKeys.LAST_SEND_TIME, String.valueOf(curTime));
 					}
 
 					retryIn = RESEND_TIME;
@@ -568,7 +568,7 @@ public class MessageHandler {
 		public void onAckReceived(long id) {
 			File rcptOutbox = new File(outbox, remoteId);
 
-			File message = new File(rcptOutbox, "" + id);
+			File message = new File(rcptOutbox, String.valueOf(id));
 			if(message.exists()) {
 				Logger.minor(this, "Received ack, deleting message file: " + message);
 				if(!message.delete()) {

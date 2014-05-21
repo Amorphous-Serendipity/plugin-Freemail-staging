@@ -112,7 +112,7 @@ public class MessageToadlet extends WebPage {
 		replyForm.addChild("input", new String[] {"type",   "name",   "value"},
 		                            new String[] {"hidden", "folder", folderName});
 		replyForm.addChild("input", new String[] {"type",   "name",    "value"},
-		                            new String[] {"hidden", "message", "" + uid});
+		                            new String[] {"hidden", "message", String.valueOf(uid)});
 
 		String replyText = FreemailL10n.getString("Freemail.MessageToadlet.reply");
 		replyForm.addChild("input", new String[] {"type",   "name",  "value"},

@@ -874,7 +874,7 @@ class Channel {
 				channelProps.put(PropsKeys.FETCH_SLOT, responderSlot);
 				channelProps.put(PropsKeys.SEND_CODE, "i");
 				channelProps.put(PropsKeys.FETCH_CODE, "r");
-				channelProps.put(PropsKeys.TIMEOUT, "" + timeout);
+				channelProps.put(PropsKeys.TIMEOUT, String.valueOf(timeout));
 			}
 
 			//Check the timeout. If the channel is already in
