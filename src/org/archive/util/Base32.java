@@ -53,7 +53,7 @@ public class Base32 {
      * Encodes byte array to Base32 String.
      *
      * @param bytes Bytes to encode.
-     * @return Encoded byte array <code>bytes</code> as a String.
+     * @return Encoded byte array {@code bytes} as a String.
      *
      */
     static public String encode(final byte[] bytes) {
@@ -94,7 +94,7 @@ public class Base32 {
      * Decodes the given Base32 String to a raw byte array.
      *
      * @param base32 the base32 string that should be decoded
-     * @return Decoded <code>base32</code> String as a raw byte array.
+     * @return Decoded {@code base32} String as a raw byte array.
      */
     static public byte[] decode(final String base32) {
         int i, index, lookup, offset, digit;
