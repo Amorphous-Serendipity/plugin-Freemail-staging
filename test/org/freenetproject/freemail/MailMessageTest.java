@@ -36,8 +36,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.freenetproject.freemail.MailMessage;
-
 import utils.Utils;
 
 public class MailMessageTest {

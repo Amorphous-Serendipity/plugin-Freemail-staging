@@ -29,7 +29,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.freenetproject.freemail.AccountManager;
-import org.freenetproject.freemail.imap.IMAPHandler;
 import org.junit.Test;
 
 import fakes.ConfigurableAccountManager;

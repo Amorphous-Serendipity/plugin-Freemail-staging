@@ -25,9 +25,6 @@ import java.util.Locale;
 
 import org.junit.Test;
 
-import org.freenetproject.freemail.imap.IMAPBadMessageException;
-import org.freenetproject.freemail.imap.IMAPMessage;
-
 public class IMAPMessageTest {
 	@Test
 	public void split() {

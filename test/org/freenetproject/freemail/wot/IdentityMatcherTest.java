@@ -30,8 +30,6 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import org.freenetproject.freemail.wot.Identity;
-import org.freenetproject.freemail.wot.IdentityMatcher;
 import org.freenetproject.freemail.wot.IdentityMatcher.MatchMethod;
 
 import data.TestId1Data;

@@ -26,8 +26,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import org.freenetproject.freemail.FreenetURI;
-
 public class FreenetURITest {
 	private static final String KEY_HASH = "TJl1G~HtSb5uRWW2ei36yXbilXTehZwXNwTirvpVSQ";
 	private static final String KEY_BODY = KEY_HASH + ",ISYik-w5cLR7n6IzL3GjmHmp~tj7AJaDWtNhrZ5qt-4,AQECAAE";

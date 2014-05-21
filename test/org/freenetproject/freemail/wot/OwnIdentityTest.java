@@ -24,9 +24,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import org.freenetproject.freemail.wot.Identity;
-import org.freenetproject.freemail.wot.OwnIdentity;
-
 public class OwnIdentityTest {
 	@Test
 	public void equalsSymmetricWithIdentity() {

@@ -27,8 +27,6 @@ import java.io.OutputStream;
 
 import org.junit.Test;
 
-import org.freenetproject.freemail.MailMessage;
-
 public class MailMessageBodyEncodingTest {
 	@Test
 	public void encodeAsciiText() throws IOException {

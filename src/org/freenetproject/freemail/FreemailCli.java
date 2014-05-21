@@ -24,7 +24,6 @@ package org.freenetproject.freemail;
 import java.io.IOException;
 import java.security.SecureRandom;
 
-import org.freenetproject.freemail.Freemail;
 import org.freenetproject.freemail.utils.Logger;
 
 

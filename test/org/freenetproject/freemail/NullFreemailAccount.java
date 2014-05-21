@@ -21,7 +21,6 @@ package org.freenetproject.freemail;
 
 import java.io.File;
 
-import org.freenetproject.freemail.FreemailAccount;
 import org.freenetproject.freemail.transport.MessageHandler;
 import org.freenetproject.freemail.utils.PropsFile;
 

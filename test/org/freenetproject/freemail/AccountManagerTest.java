@@ -28,9 +28,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.freenetproject.freemail.AccountManager;
-import org.freenetproject.freemail.FreemailAccount;
-
 import data.TestId1Data;
 
 import utils.Utils;
