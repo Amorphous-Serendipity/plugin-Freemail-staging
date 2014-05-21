@@ -22,7 +22,6 @@
 package org.freenetproject.freemail;
 
 import java.io.File;
-import java.lang.InterruptedException;
 import java.util.concurrent.TimeUnit;
 
 import org.freenetproject.freemail.fcp.ConnectionTerminatedException;

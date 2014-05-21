@@ -28,7 +28,6 @@ package org.freenetproject.freemail;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.lang.StringBuffer;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
